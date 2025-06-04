@@ -1,0 +1,2011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Techs & Graphics - Creativity without limits, Delivered Digitally</title>
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Basic Reset & Typography */
+        :root {
+            --primary-blue: #007bff; /* A nice blue, similar to your logo */
+            --dark-blue: #0056b3;
+            --light-gray: #f8f8f8;
+            --dark-gray: #333;
+            --text-color: #555;
+            --white: #fff;
+            --red-error: #dc3545; /* Color for form validation errors */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Smooth scrolling for anchor links (JS will enhance this further) */
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--dark-gray);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 3.5em;
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2.5em;
+            margin-bottom: 40px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: var(--primary-blue);
+            margin-top: 30px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--primary-blue);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--dark-blue);
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 12px 25px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+            font-weight: bold;
+            text-align: center; /* Ensure text is centered in button */
+        }
+
+        .btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            margin-left: 15px;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--white);
+            color: var(--primary-blue);
+            border-color: var(--white);
+        }
+
+        .btn-small {
+            padding: 8px 15px;
+            font-size: 0.9em;
+            margin-top: 15px;
+        }
+
+        /* Header & Navbar */
+        .header {
+            background-color: var(--dark-gray);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo img {
+            height: 40px; /* Adjust as needed */
+            width: auto;
+        }
+
+        .logo-text {
+            color: var(--white);
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        .nav-links a {
+            color: var(--white);
+            margin-left: 30px;
+            font-size: 1.1em;
+            transition: color 0.3s ease;
+            padding: 5px 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        .menu-toggle {
+            display: none; /* Hidden on desktop */
+            font-size: 1.8em;
+            color: var(--white);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            /* Placeholder background image - Replace with your actual image path */
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('Background.jpg') no-repeat center center/cover;
+            height: 85vh; /* Adjust height as needed */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            position: relative;
+            padding: 20px; /* Add padding for smaller screens */
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative; /* Ensure content is above overlay */
+            z-index: 2;
+        }
+
+        .hero-content h1 {
+            font-size: 4.5em; /* Larger heading */
+            margin-bottom: 10px;
+        }
+
+        .hero-content h2 {
+            font-size: 3em; /* Larger subheading */
+            color: var(--white);
+            margin-bottom: 25px;
+        }
+
+        .hero-content .slogan {
+            font-size: 1.5em;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .hero-ctas {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        /* General Section Styling */
+        .about-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .services-section {
+            background-color: var(--white);
+        }
+
+        .contact-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        /* Team Section */
+        .team-section {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member-card {
+            background-color: var(--light-gray);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .team-member-card img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%; /* Circular image */
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .team-member-card h4 {
+            font-size: 1.5em;
+            color: var(--dark-blue);
+            margin-bottom: 5px;
+        }
+
+        .team-member-card .title {
+            font-size: 1em;
+            color: var(--primary-blue);
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .team-member-card p {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 0; /* Remove extra margin from last p */
+        }
+
+
+        /* Services Section Specifics */
+        .service-category {
+            background-color: var(--white);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: center;
+        }
+
+        .service-category h3 .fas {
+            font-size: 1.2em;
+            vertical-align: middle;
+        }
+
+        .tag {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        /* Price Lists for Graphic Design */
+        .price-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .price-item {
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .price-item strong {
+            color: var(--dark-gray);
+        }
+
+        .price-item span {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Display Options (A-Frame, Pop-Up, X-Frame, Pull-Up) */
+        .display-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+            justify-content: center; /* Center items if they don't fill the row */
+        }
+
+        .display-item {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: center;
+            border-top: 5px solid var(--primary-blue); /* Accent border */
+        }
+
+        .display-item h4 {
+            font-size: 1.4em;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+        }
+
+        .display-item .price {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            margin: 15px 0;
+        }
+
+        .display-item .includes {
+            font-size: 0.9em;
+            color: #777;
+        }
+
+        /* Estate Boards Pricing */
+        .estate-boards-pricing {
+            margin-top: 20px;
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+        }
+
+        .estate-boards-pricing h4 {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            color: var(--dark-gray);
+        }
+
+        .estate-boards-pricing .price-table {
+            display: flex;
+            justify-content: space-around;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* Allow wrapping on small screens */
+        }
+
+        .estate-boards-pricing .price-col {
+            background-color: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            flex: 1; /* Distribute space evenly */
+            min-width: 200px; /* Minimum width for columns */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .estate-boards-pricing .price-col h5 {
+            font-size: 1.1em;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .estate-boards-pricing .price-col p {
+            margin: 5px 0;
+            font-size: 1em;
+        }
+
+        .estate-boards-pricing .price-col span {
+            font-weight: bold;
+            color: var(--dark-blue);
+        }
+
+        .estate-boards-pricing .note {
+            font-size: 0.9em;
+            color: #777;
+            margin-top: 15px;
+        }
+
+
+        /* Business Card Options */
+        .card-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .card-type {
+            background-color: var(--light-gray);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .card-type h4 {
+            font-size: 1.3em;
+            color: var(--dark-gray);
+            margin-bottom: 10px;
+        }
+
+        .card-type p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+        .card-type span {
+            font-weight: bold;
+            color: var(--primary-blue);
+        }
+
+        /* Website Packages */
+        .website-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .website-package-item {
+            background-color: var(--light-gray);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: left;
+            border-bottom: 5px solid var(--primary-blue);
+        }
+
+        .website-package-item h4 {
+            text-align: center;
+            font-size: 1.6em;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .website-package-item .old-price {
+            text-decoration: line-through;
+            color: #888;
+            font-size: 1em;
+            text-align: center;
+        }
+
+        .website-package-item .new-price {
+            font-size: 2.2em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .website-package-item .new-price .tag {
+            font-size: 0.6em;
+            vertical-align: middle;
+            margin-left: 10px;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        .website-package-item ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+
+        .website-package-item ul li {
+            margin-bottom: 10px;
+            font-size: 1em;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .website-package-item ul li:before {
+            content: "\f00c"; /* Font Awesome check icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--dark-blue);
+            margin-right: 10px;
+            font-size: 0.9em;
+            line-height: 1.6; /* Align icon with text */
+        }
+
+        /* IT & POS Solutions */
+        .it-pos-info {
+            margin-top: 20px;
+            text-align: left;
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+        }
+
+        .it-pos-info h4 {
+            text-align: left;
+            font-size: 1.4em;
+            color: var(--primary-blue);
+            margin-bottom: 10px;
+        }
+
+        .it-pos-info h5 {
+            font-size: 1.1em;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+        }
+
+        .it-pos-info ul {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 15px;
+        }
+
+        .it-pos-info ul li {
+            background-color: var(--white);
+            padding: 10px 15px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .it-pos-info ul li:before {
+            content: "\f00c"; /* Check icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--primary-blue);
+        }
+
+        .it-pos-info .pos-feature {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--dark-gray);
+            font-size: 1.05em;
+            padding-left: 10px;
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        /* Software Packages */
+        .software-packages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .software-item {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            text-align: left;
+            border-top: 4px solid var(--primary-blue);
+        }
+
+        .software-item h4 {
+            text-align: center;
+            font-size: 1.4em;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .software-item .price {
+            font-size: 1.6em;
+            font-weight: bold;
+            color: var(--primary-blue);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .software-item .price .tag {
+            font-size: 0.7em;
+            vertical-align: middle;
+            margin-left: 8px;
+            padding: 3px 7px;
+        }
+
+        .software-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .software-item ul li {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .software-item ul li:before {
+            content: "\f00c"; /* Check icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--dark-blue);
+            font-size: 0.85em;
+            line-height: 1.5;
+        }
+
+        /* Graphic Design Training */
+        .training-details {
+            margin-top: 30px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            text-align: left;
+        }
+
+        .training-info-block {
+            background-color: var(--light-gray);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--primary-blue);
+        }
+
+        .training-info-block h4 {
+            text-align: left;
+            font-size: 1.3em;
+            color: var(--dark-blue);
+            margin-bottom: 15px;
+        }
+
+        .training-info-block ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .training-info-block ul li {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .training-info-block ul li:before {
+            content: "\f00c"; /* Check icon */
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            color: var(--primary-blue);
+            font-size: 0.8em;
+            line-height: 1.5;
+        }
+
+        /* Portfolio Section */
+        .portfolio-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .portfolio-item {
+            background-color: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-item h4 {
+            font-size: 1.3em;
+            color: var(--dark-blue);
+            margin: 15px 15px 10px;
+            text-align: left;
+        }
+
+        .portfolio-item p {
+            font-size: 0.95em;
+            color: #666;
+            padding: 0 15px 15px;
+            text-align: left;
+        }
+
+        /* Testimonials Section */
+        .testimonials-section {
+            background-color: var(--primary-blue);
+            color: var(--white);
+            text-align: center;
+            padding: 60px 0; /* Adjust padding */
+        }
+
+        .testimonials-section h2 {
+            color: var(--white);
+        }
+
+        /* Testimonial Carousel - Enhanced with JS */
+        .testimonial-carousel-container {
+            position: relative;
+            max-width: 900px; /* Limit width to keep it neat */
+            margin: 0 auto;
+            overflow: hidden; /* Hide overflow for smooth transitions */
+        }
+
+        .testimonial-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out; /* Smooth slide effect */
+            scroll-behavior: smooth; /* Fallback for direct scrolling if needed */
+        }
+
+        .testimonial-item {
+            flex: 0 0 100%; /* Each item takes full width of its container */
+            background-color: rgba(255, 255, 255, 0.15); /* Slightly transparent white */
+            margin: 20px; /* Adjust margin for spacing between items */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            min-height: 180px; /* Ensure consistent height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .testimonial-item p {
+            font-size: 1.1em;
+            font-style: italic;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+
+        .testimonial-item cite {
+            display: block;
+            font-size: 0.9em;
+            font-weight: bold;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: auto; /* Push cite to bottom */
+        }
+
+        .carousel-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.5);
+            color: var(--white);
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 50%;
+            font-size: 1.5em;
+            z-index: 10;
+            transition: background-color 0.3s ease;
+        }
+
+        .carousel-nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .carousel-nav-btn.prev {
+            left: 10px;
+        }
+
+        .carousel-nav-btn.next {
+            right: 10px;
+        }
+
+        /* Company Profile Download Section */
+        .profile-download-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .btn-primary-download {
+            background-color: var(--dark-blue);
+            padding: 15px 30px;
+            font-size: 1.2em;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary-download:hover {
+            background-color: var(--primary-blue);
+        }
+
+        .btn-primary-download .fas {
+            font-size: 1em;
+        }
+
+        .mt-30 {
+            margin-top: 30px;
+        }
+
+        /* Request a Quote Section */
+        .quote-section {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .quote-form {
+            max-width: 700px;
+            margin: 40px auto 0;
+            padding: 30px;
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+            text-align: left;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--dark-gray);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+        }
+
+        .quote-form button.btn {
+            width: auto;
+            display: block;
+            margin: 25px auto 0;
+            padding: 14px 30px;
+            font-size: 1.1em;
+            cursor: pointer;
+            border: none;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .quote-form button.btn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* Form Validation styles */
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: 2px solid var(--primary-blue);
+            outline-offset: 2px;
+        }
+
+        .form-group input.error,
+        .form-group select.error,
+        .form-group textarea.error {
+            border-color: var(--red-error);
+        }
+
+        .error-message {
+            color: var(--red-error);
+            font-size: 0.9em;
+            margin-top: 5px;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--light-gray);
+            text-align: center;
+        }
+
+        .contact-info {
+            font-size: 1.1em;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .contact-info p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .contact-info .fas, .contact-info .fab {
+            color: var(--primary-blue);
+            font-size: 1.2em;
+        }
+
+        .google-map {
+            margin-top: 40px;
+            width: 100%;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .google-map iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+        }
+
+        /* Blog / News Section (Optional) */
+        .blog-section {
+            background-color: var(--white);
+            text-align: center;
+        }
+
+        .blog-posts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .blog-post-item {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            text-align: left;
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-post-item img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .blog-post-item h3 {
+            font-size: 1.3em;
+            color: var(--dark-blue);
+            margin: 15px 15px 5px;
+            text-align: left;
+        }
+
+        .blog-post-item .post-meta {
+            font-size: 0.85em;
+            color: #777;
+            margin: 0 15px 10px;
+            text-align: left;
+        }
+
+        .blog-post-item p {
+            font-size: 0.95em;
+            color: #666;
+            padding: 0 15px 15px;
+            text-align: left;
+        }
+
+        .blog-post-item .read-more {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: bold;
+            padding: 0 15px 15px;
+            color: var(--primary-blue);
+        }
+
+        .blog-post-item .read-more:hover {
+            color: var(--dark-blue);
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-gray);
+            color: var(--white);
+            padding: 25px 0;
+            text-align: center;
+            font-size: 0.9em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-social-links a {
+            color: var(--white);
+            font-size: 1.5em;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-social-links a:hover {
+            color: var(--primary-blue);
+        }
+
+        /* Back to Top Button */
+        #backToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 30px; /* Place at the bottom */
+            right: 30px; /* Place at the right */
+            z-index: 99; /* Ensure it's above other content */
+            font-size: 1.5em;
+            background-color: var(--primary-blue);
+            color: var(--white);
+            border: none;
+            border-radius: 50%; /* Circular shape */
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease, opacity 0.3s ease;
+            opacity: 0; /* Start hidden for JS animation */
+        }
+
+        #backToTopBtn.show {
+            opacity: 1;
+        }
+
+        #backToTopBtn:hover {
+            background-color: var(--dark-blue);
+        }
+
+        /* Animate on Scroll (AOS) Styles */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .section-padding {
+                padding: 60px 0;
+            }
+            .hero-content h1 {
+                font-size: 3.5em;
+            }
+            .hero-content h2 {
+                font-size: 2.2em;
+            }
+            h2 {
+                font-size: 2em;
+            }
+            h3 {
+                font-size: 1.6em;
+            }
+            .price-list, .display-options, .card-options,
+            .website-packages, .software-packages, .training-details,
+            .portfolio-grid, .blog-posts-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+            .testimonial-item {
+                flex: 0 0 80%; /* Make testimonials take more width on smaller screens */
+                margin: 20px 10px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-wrap: wrap;
+            }
+            .logo {
+                flex-grow: 1;
+            }
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+                background-color: var(--dark-gray);
+                position: absolute;
+                top: 70px;
+                left: 0;
+                padding: 10px 0;
+                border-top: 1px solid rgba(255, 255, 255, 0.1);
+                text-align: center;
+            }
+            .nav-links.active {
+                display: flex;
+            }
+            .nav-links a {
+                margin: 10px 0;
+                padding: 10px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }
+            .nav-links a:last-child {
+                border-bottom: none;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .hero-section {
+                height: 70vh;
+            }
+            .hero-content h1 {
+                font-size: 2.5em;
+            }
+            .hero-content h2 {
+                font-size: 1.8em;
+            }
+            .hero-content .slogan {
+                font-size: 1.2em;
+            }
+            .hero-ctas {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .btn-secondary {
+                margin-left: 0;
+            }
+            .service-category {
+                padding: 20px;
+            }
+            .price-list, .display-options, .card-options,
+            .website-packages, .software-packages, .training-details,
+            .portfolio-grid, .blog-posts-grid {
+                grid-template-columns: 1fr; /* Stack on very small screens */
+            }
+            .estate-boards-pricing .price-table {
+                flex-direction: column;
+            }
+            .quote-form {
+                padding: 20px;
+                margin-top: 20px;
+            }
+            .contact-info p {
+                flex-direction: column;
+                gap: 5px;
+            }
+            .testimonial-item {
+                flex: 0 0 95%; /* Almost full width for mobile */
+                margin: 10px 5px;
+            }
+            .carousel-nav-btn {
+                font-size: 1.2em;
+                width: 40px;
+                height: 40px;
+                padding: 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+            h2 {
+                font-size: 1.8em;
+            }
+            .hero-content p {
+                font-size: 0.9em;
+            }
+            .btn {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+            .logo-text {
+                font-size: 1.5em;
+            }
+            .section-padding {
+                padding: 40px 0;
+            }
+            .quote-form button.btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="navbar">
+            <a href="#home" class="logo">
+                <!-- Placeholder for Logo 2.png - Replace with your actual image path -->
+                <img src="Logo 2.png" onerror="this.onerror=null; this.src='https://placehold.co/40x40/cccccc/000000?text=Logo';" alt="A Techs & Graphics Logo">
+            </a>
+            <div class="nav-links" id="navLinks">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#team">Our Team</a> <!-- New Team Link -->
+                <a href="#services">Services</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#profile-download">Company Profile</a>
+                <a href="#quote">Request a Quote</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="menu-toggle" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero-section animate-on-scroll">
+            <div class="hero-content">
+                <h1>Creativity without limits,</h1>
+                <h2>Delivered Digitally</h2>
+                <p class="slogan">Empowering Brands with Design & Technology</p>
+                <p>Your premier partner for innovative graphic design, stunning outdoor displays, and reliable IT solutions in Namibia.</p>
+                <div class="hero-ctas">
+                    <a href="#services" class="btn">Explore Our Services</a>
+                    <a href="#quote" class="btn btn-secondary">Get a Quote</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>About A Techs & Graphics</h2>
+                <p>A Techs & Graphics was founded with a passion for transforming visions into captivating digital and physical realities. With over <strong>4 years of experience</strong> in graphic design, digital marketing, IT support, and branding, we bring a wealth of expertise to every project.</p>
+                <p><strong>Our Mission:</strong> To empower businesses and individuals with creative, high-quality, and affordable design and technology solutions that drive success.</p>
+                <p><strong>Our Vision:</strong> To be the leading design and technology partner in Namibia, known for unparalleled creativity, reliability, and client satisfaction.</p>
+                <p>Led by our Operational Managers, Frans N.H and Jekonia Ananias, our dedicated team ensures every project reflects our promise of "Creativity without limits, Delivered Digitally." We strive to provide exceptional service and tangible results that help your brand stand out.</p>
+            </div>
+        </section>
+
+        <!-- NEW: Our Team Section -->
+        <section id="team" class="team-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>Meet Our Team</h2>
+                <p>Our dedicated professionals are passionate about delivering exceptional results.</p>
+                <div class="team-grid">
+                    <div class="team-member-card">
+                        <img src="Frans.jpg" onerror="this.onerror=null; this.src='https://placehold.co/150x150/cccccc/000000?text=CEO';" alt="Frans N.H">
+                        <h4>Frans N.Haufiku</h4>
+                        <p class="title">CEO , Senior Graphic Designer, Full Stack Developer & IT Specialist</p>
+                        <p>Visionary leader and expert in IT solutions, driving innovation and strategic growth.</p>
+                    </div>
+                    <div class="team-member-card">
+                        <img src="Chixxa.png" onerror="this.onerror=null; this.src='https://placehold.co/150x150/cccccc/000000?text=Co-Founder';" alt="Jekonia Ananias">
+                        <h4>Fillimon L.Haufiku</h4>
+                        <p class="title">Co-Founder & Board Member</p>
+                        <p>Strategic thinker and co-founder, guiding the company's long-term direction.</p>
+                    </div>
+                    <div class="team-member-card">
+                        <img src="Teopo.jpg" onerror="this.onerror=null; this.src='https://placehold.co/150x150/cccccc/000000?text=Designer';" alt="Junior Designer">
+                        <h4>Shipanga Teopolina</h4>
+                        <p class="title">Sales Team</p>
+                        <p>Bringing fresh perspectives and creative flair to all our projects.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- END NEW: Our Team Section -->
+
+        <section id="services" class="services-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>Our Comprehensive Services</h2>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-palette"></i> Graphic Design</h3>
+                    <p>Bring your brand to life with our expert digital design services. From concept to completion, we create visually stunning graphics that capture attention and communicate your message effectively.</p>
+                    <div class="price-list">
+                        <div class="price-item"><strong>Logo Design:</strong> <span>N$350</span></div>
+                        <div class="price-item"><strong>Banner Design:</strong> <span>N$300</span></div>
+                        <div class="price-item"><strong>Flyer Design:</strong> <span>N$250</span></div>
+                        <div class="price-item"><strong>Business Cards Design:</strong> <span>N$150</span></div>
+                        <div class="price-item"><strong>Invitation Cards Design:</strong> <span>N$250</span></div>
+                        <div class="price-item"><strong>Letterheads Design:</strong> <span>N$150</span></div>
+                        <div class="price-item"><strong>Certificates Design:</strong> <span>N$200</span></div>
+                        <div class="price-item"><strong>Company Profiles:</strong> <span>N$800</span></div>
+                        <div class="price-item"><strong>Sticker Designs:</strong> <span>N$300</span></div>
+                        <div class="price-item"><strong>Menu Designs:</strong> <span>N$300</span></div>
+                    </div>
+                    <a href="#quote" class="btn btn-small">Request Graphic Design Quote</a>
+                </div>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-sign-hanging"></i> Outdoor Display & Printing <span class="tag">Free Designs Included!</span></h3>
+                    <p>Make a big impact with our high-quality outdoor display solutions. Get noticed with vibrant, durable prints designed to stand out. All designs are included in the price for your convenience.</p>
+                    <div class="display-options">
+                        <div class="display-item">
+                            <h4>A-Frame with Fabric</h4>
+                            <p>2M x 1M (2000MM x 1000MM)</p>
+                            <p class="price">N$3,150.00</p>
+                        </div>
+                        <div class="display-item">
+                            <h4>Pop-Up Banner</h4>
+                            <p>2M x 1M (2000MM x 1000MM)</p>
+                            <p class="price">N$2,150.00</p>
+                        </div>
+                    </div>
+                    <div class="display-options">
+                        <div class="display-item">
+                            <h4>X-Frame Banner</h4>
+                            <p>650MM X 1600MM</p>
+                            <p class="price">N$1550.00</p>
+                            <p class="includes">Complete with structure, print & bag</p>
+                        </div>
+                        <div class="display-item">
+                            <h4>Econo Pull-Up Banners</h4>
+                            <p>850MM X 2100MM</p>
+                            <p class="price">N$1950.00</p>
+                            <p class="includes">Complete with structure, print & bag</p>
+                        </div>
+                        <div class="display-item">
+                            <h4>Deluxe Pull-Up Banner</h4>
+                            <p>650MM X 2100MM</p>
+                            <p class="price">N$2550.00</p>
+                            <p class="includes">Complete with structure, print & bag</p>
+                        </div>
+                    </div>
+                    <a href="#quote" class="btn btn-small">Get Display Quote</a>
+                </div>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-map-marker-alt"></i> Estate Boards <span class="tag">3 Days Collection</span></h3>
+                    <p>High-quality estate boards for your property listings and directional signage. Available in various sizes with custom options.</p>
+                    <div class="estate-boards-pricing">
+                        <h4>600MM X 400MM (3mm Correx Estate Board with Eyelids 4X Steel)</h4>
+                        <div class="price-table">
+                            <div class="price-col">
+                                <h5>QTY 1-20</h5>
+                                <p>Single: <span>N$230.00</span></p>
+                                <p>Double: <span>N$300.00</span></p>
+                            </div>
+                            <div class="price-col">
+                                <h5>QTY 21+</h5>
+                                <p>Single: <span>N$200.00</span></p>
+                                <p>Double: <span>N$280.00</span></p>
+                            </div>
+                        </div>
+                        <p class="note">Custom sizes available on request.</p>
+                    </div>
+                    <a href="#quote" class="btn btn-small">Order Estate Boards</a>
+                </div>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-address-card"></i> Business Card Printing <span class="tag">3 Days Collection</span></h3>
+                    <p>Professional business cards to make a lasting impression. Choose from various finishes to perfectly represent your brand.</p>
+                    <div class="card-options">
+                        <div class="card-type">
+                            <h4>Normal (300GSM)</h4>
+                            <p>Single: <span>N$2.10</span></p>
+                            <p>Double: <span>N$4.00</span></p>
+                        </div>
+                        <div class="card-type">
+                            <h4>Gloss Coated</h4>
+                            <p>Single: <span>N$3.50</span></p>
+                            <p>Double: <span>N$4.50</span></p>
+                        </div>
+                        <div class="card-type">
+                            <h4>Matt Coated</h4>
+                            <p>Single: <span>N$4.00</span></p>
+                            <p>Double: <span>N$5.00</span></p>
+                        </div>
+                    </div>
+                    <a href="#quote" class="btn btn-small">Print Business Cards</a>
+                </div>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-globe"></i> Website Design</h3>
+                    <p>Get an eye-catching, highly converting, and responsive website that will help your business grow. We offer tailored packages for various needs.</p>
+                    <div class="website-packages">
+                        <div class="website-package-item">
+                            <h4>Lite Website Package</h4>
+                            <p class="old-price">WAS N$5,500</p>
+                            <p class="new-price">NOW N$3,700 <span class="tag">ONE-OFF</span></p>
+                            <ul>
+                                <li>10 collaborators</li>
+                                <li>100 GB storage space</li>
+                                <li>Standard marketing suite</li>
+                                <li>Free domain for 1 year</li>
+                                <li>20,000 CMS items</li>
+                                <li>Accept payments</li>
+                                <li>Standard eCommerce</li>
+                            </ul>
+                        </div>
+                        <div class="website-package-item">
+                            <h4>Online Store Website</h4>
+                            <p class="old-price">WAS N$9,500</p>
+                            <p class="new-price">NOW N$6,500 <span class="tag">ONE-OFF</span></p>
+                            <ul>
+                                <li>100 collaborators</li>
+                                <li>Unlimited storage space</li>
+                                <li>Advanced marketing suite</li>
+                                <li>Free domain for 1 year</li>
+                                <li>500,000 CMS items</li>
+                                <li>Accept payments</li>
+                                <li>Advanced eCommerce</li>
+                                <li>Advanced developer platform</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#quote" class="btn btn-small">Get a Website Quote</a>
+                </div>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-laptop-code"></i> IT & Point of Sale (POS) Solutions</h3>
+                    <p>Streamline your operations and enhance efficiency with our reliable hardware, software, and IT support services.</p>
+                    <div class="it-pos-info">
+                        <h4>Bingo / Lucky 7 Program</h4>
+                        <p>Specialized software to manage your Bingo or Lucky 7 operations efficiently.</p>
+                        <h4>POS Hardware & Software Installation</h4>
+                        <div class="pos-hardware">
+                            <h5>Hardware Includes:</h5>
+                            <ul>
+                                <li>Computer Box</li>
+                                <li>Monitor</li>
+                                <li>Keyboard & Mouse</li>
+                                <li>Thermal Barcode Scanner</li>
+                                <li>Brand New Cash Drawer</li>
+                                <li>Receipt Printer</li>
+                                <li>Receipt Rolls</li>
+                            </ul>
+                        </div>
+                        <p class="pos-feature">Full POS Software Installation</p>
+                        <p class="pos-feature">Comprehensive Staff Training</p>
+                        <p class="pos-feature">Ongoing Installation & IT Support</p>
+                    </div>
+                    <a href="#quote" class="btn btn-small">Request IT/POS Quote</a>
+                </div>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-virus-slash"></i> Software Packages</h3>
+                    <p>Secure your systems and empower your team with essential software solutions.</p>
+                    <div class="software-packages">
+                        <div class="software-item">
+                            <h4>Kaspersky Anti-Virus 1</h4>
+                            <p class="price">N$700 <span class="tag">SAVE 20%</span></p>
+                            <ul>
+                                <li>+1 User 1 year license</li>
+                                <li>Blocks viruses, ransomware, and more</li>
+                                <li>Lets PC perform as they are</li>
+                                <li>Simplifies security management</li>
+                                <li>1 PC and 1 PC FREE protection</li>
+                            </ul>
+                        </div>
+                        <div class="software-item">
+                            <h4>Microsoft Packages</h4>
+                            <p class="price">From N$2000.00 <span class="tag">ONE-OFF</span></p>
+                            <ul>
+                                <li>Includes various Microsoft products (e.g., Office 2021 Professional Plus, Windows Server 2025 Standard)</li>
+                                <li>Plus a Free USB</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="#contact" class="btn btn-small">Enquire About Software</a>
+                </div>
+
+                <div class="service-category animate-on-scroll">
+                    <h3><i class="fas fa-graduation-cap"></i> Graphic Design Training</h3>
+                    <p>Master the Art of Creativity and Design! Join our comprehensive Graphic Designing Training program to learn essential skills for a thriving career.</p>
+                    <div class="training-details">
+                        <div class="training-info-block">
+                            <h4>What you will Learn:</h4>
+                            <ul>
+                                <li>Canva (For Beginner)</li>
+                                <li>Adobe Photoshop</li>
+                                <li>CorelDRAW</li>
+                                <li>Adobe Illustrator</li>
+                                <li>Logo Design, Posters, Flyers, Social Media Content & More!!</li>
+                            </ul>
+                        </div>
+                        <div class="training-info-block">
+                            <h4>Program Details:</h4>
+                            <ul>
+                                <li><strong>Program Started:</strong> January 2025</li>
+                                <li><strong>Duration:</strong> 3 Weeks</li>
+                                <li><strong>Location:</strong> TBC</li>
+                                <li><strong>Training Fee:</strong> N$ 1500.00</li>
+                            </ul>
+                        </div>
+                        <div class="training-info-block">
+                            <h4>Why Join Us?</h4>
+                            <ul>
+                                <li>Learn From Experienced Designers</li>
+                                <li>Hands-on Practical Sessions</li>
+                                <li>Free Software Installation For Designs</li>
+                                <li>Free USB</li>
+                                <li>Certificate of Completion</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="tel:+264813441248" class="btn btn-small"><i class="fab fa-whatsapp"></i> Book Your Spot (WhatsApp)</a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="portfolio" class="portfolio-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>Our Recent Work & Projects</h2>
+                <p>Explore a selection of our finest creations, showcasing our expertise in design and technology.</p>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <!-- Placeholder for CRG Trading CC Business Plan.jpg -->
+                        <img src="CRG Trading CC Business Plan.jpg" onerror="this.onerror=null; this.src='CRG Trading CC Business Plan';" alt="Project 1: CRG Trading CC Business Plan">
+                        <h4>CRG Trading CC Business Plan</h4>
+                        <p>Comprehensive corporate identity development, from CRG Trading CC Business Plan.</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <!-- Placeholder for Besuccess Catering Website.jpg -->
+                        <img src="Besuccess Catering Website.jpg" onerror="this.onerror=null; this.src='https://placehold.co/300x220/cccccc/000000?text=Project+2';" alt="Project 2: Besuccess Catering Profile">
+                        <h4>Besuccess Catering Profile</h4>
+                        <p>Designed and developed a responsive Company Profle for a catering business.</p>
+                    </div>
+                    <div class="portfolio-item">
+                        <!-- Placeholder for Astuteness Bealboard printings.jpg -->
+                        <img src="Astuteness Bealboard printings.jpg" onerror="this.onerror=null; this.src='https://placehold.co/300x220/cccccc/000000?text=Project+3';" alt="Project 3: Astuteness Bealboard printings">
+                        <h4>Astuteness Bealboard printings</h4>
+                        <p>Created social media graphics and online ad banners for Innovatechs.</p>
+                    </div>
+                </div>
+                <a href="#contact" class="btn">See More Work / Let's Talk About Yours</a>
+            </div>
+        </section>
+
+        <section id="testimonials" class="testimonials-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>What Our Clients Say</h2>
+                <div class="testimonial-carousel-container">
+                    <div class="testimonial-carousel">
+                        <div class="testimonial-item">
+                            <p>"A Techs & Graphics delivered exceptional graphic design work for our new branding. Professional and highly creative!"</p>
+                            <cite>- Jane Doe, CEO of Example Corp</cite>
+                        </div>
+                        <div class="testimonial-item">
+                            <p>"Their IT support is incredibly responsive and knowledgeable. They solved our network issues swiftly."</p>
+                            <cite>- John Smith, Operations Manager, Tech Solutions</cite>
+                        </div>
+                        <div class="testimonial-item">
+                            <p>"Our new website is exactly what we envisioned. A Techs & Graphics made the process seamless and the result is stunning."</p>
+                            <cite>- Emily White, Founder, Local Business</cite>
+                        </div>
+                        <div class="testimonial-item">
+                            <p>"Highly recommend A Techs & Graphics for their innovative solutions and quick turnaround times. Truly a pleasure to work with!"</p>
+                            <cite>- David Lee, Marketing Director</cite>
+                        </div>
+                        <div class="testimonial-item">
+                            <p>"The graphic design training was comprehensive and engaging. I learned so much and feel confident in my new skills."</p>
+                            <cite>- Sarah Brown, Aspiring Designer</cite>
+                        </div>
+                    </div>
+                    <button class="carousel-nav-btn prev"><i class="fas fa-chevron-left"></i></button>
+                    <button class="carousel-nav-btn next"><i class="fas fa-chevron-right"></i></button>
+                </div>
+                <a href="#quote" class="btn">Ready to Start Your Project?</a>
+            </div>
+        </section>
+
+        <section id="profile-download" class="profile-download-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>Our Company Profile</h2>
+                <p>Download our detailed company profile to learn more about our services, values, and experience.</p>
+                <!-- Placeholder for Download PDF Profile.pdf -->
+                <a href="Download PDF Profile.pdf" download="A_Techs_Graphics_Profile.pdf" class="btn btn-primary-download">
+                    <i class="fas fa-download"></i> Download PDF Profile
+                </a>
+                <p class="mt-30">Looking for a tailored representation of your own business?</p>
+                <a href="#quote" class="btn btn-secondary">Request a Custom Company Profile Design</a>
+            </div>
+        </section>
+
+        <section id="quote" class="quote-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>Request a Quote</h2>
+                <p>Tell us about your project, and we'll get back to you with a personalized quote.</p>
+
+                <form action="YOUR_FORM_SUBMISSION_ENDPOINT" method="POST" class="quote-form" id="quoteForm">
+                    <div class="form-group">
+                        <label for="name">Your Name:</label>
+                        <input type="text" id="name" name="name" required>
+                        <span class="error-message" id="nameError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Your Email:</label>
+                        <input type="email" id="email" name="email" required>
+                        <span class="error-message" id="emailError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number (Optional):</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="service">Service of Interest:</label>
+                        <select id="service" name="service" required>
+                            <option value="">-- Please select a service --</option>
+                            <option value="Logo Design">Logo Design</option>
+                            <option value="Banner Design">Banner Design</option>
+                            <option value="Flyer Design">Flyer Design</option>
+                            <option value="Business Cards Design">Business Cards Design</option>
+                            <option value="Invitation Cards Design">Invitation Cards Design</option>
+                            <option value="Letterheads Design">Letterheads Design</option>
+                            <option value="Certificates Design">Certificates Design</option>
+                            <option value="Company Profiles">Company Profiles</option>
+                            <option value="Sticker Designs">Sticker Designs</option>
+                            <option value="Menu Designs">Menu Designs</option>
+                            <option value="A-Frame">A-Frame with Fabric Display</option>
+                            <option value="Pop-Up Banner">Pop-Up Banner Display</option>
+                            <option value="X-Frame Banner">X-Frame Banner Display</option>
+                            <option value="Econo Pull-Up">Econo Pull-Up Banner Display</option>
+                            <option value="Deluxe Pull-Up">Deluxe Pull-Up Banner Display</option>
+                            <option value="Business Card Printing">Business Card Printing</option>
+                            <option value="Estate Boards">Estate Boards</option>
+                            <option value="Lite Website Package">Lite Website Package</option>
+                            <option value="Online Store Website">Online Store Website</option>
+                            <option value="IT & POS Solutions">IT & POS Solutions</option>
+                            <option value="Kaspersky Anti-Virus">Kaspersky Anti-Virus</option>
+                            <option value="Microsoft Packages">Microsoft Packages</option>
+                            <option value="Graphic Design Training">Graphic Design Training</option>
+                            <option value="Other">Other (Please specify in message)</option>
+                        </select>
+                        <span class="error-message" id="serviceError"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Your Message / Project Details:</label>
+                        <textarea id="message" name="message" rows="6" required></textarea>
+                        <span class="error-message" id="messageError"></span>
+                    </div>
+
+                    <button type="submit" class="btn">Submit Quote Request</button>
+                </form>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section section-padding animate-on-scroll">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>Have a project in mind or need assistance? Get in touch with us!</p>
+                <div class="contact-info">
+                    <p><i class="fas fa-phone-alt"></i> Phone: <a href="tel:+264813441248">+264 81 344 1248</a></p>
+                    <p><i class="fab fa-whatsapp"></i> WhatsApp: <a href="https://wa.me/264813441248" target="_blank" rel="noopener noreferrer">+264 81 344 1248</a> / <a href="https://wa.me/264853441248" target="_blank" rel="noopener noreferrer">+264 85 344 1248</a></p>
+                    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:a.techs.graphics@gmail.com">a.techs.graphics@gmail.com</a></p>
+                    <p><i class="fab fa-instagram"></i> Instagram: <a href="https://instagram.com/a.techs.designs" target="_blank" rel="noopener noreferrer">@a.techs.designs</a></p>
+                    <p><i class="fab fa-facebook-f"></i> Facebook: <a href="https://www.facebook.com/share/16sTQFGxPA/" target="_blank" rel="noopener noreferrer">A Techs & Graphics on Facebook</a></p>
+                    <p><i class="fas fa-map-marker-alt"></i> Location: Windhoek, Namibia</p>
+                    <p>Operational Managers: Mr Frans N.H & Mr Sakaria</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 A Techs & Graphics. All rights reserved, Designed by A Technology Websites Developer Team.</p>
+            <div class="footer-social-links">
+                <a href="https://www.facebook.com/share/16sTQFGxPA/" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://instagram.com/a.techs.designs" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/264813441248" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="backToTopBtn" title="Go to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script>
+        // --- 1. Mobile Navigation Toggle ---
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        if (menuToggle && navLinks) {
+            menuToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+            });
+
+            // Close nav links when a link is clicked (for mobile)
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                    }
+                });
+            });
+        } else {
+            console.error("Mobile navigation elements not found.");
+        }
+
+
+        // --- 2. Smooth Scrolling for all internal anchor links ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault(); // Prevent default jump behavior
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    // Use scrollIntoView with smooth behavior
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+
+                    // Optional: Update URL hash without jumping
+                    // history.pushState(null, '', targetId); // Commented out to avoid URL hash issues in some environments
+                }
+            });
+        });
+
+
+        // --- 3. Back to Top Button ---
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        if (backToTopBtn) {
+            // Show/hide the button based on scroll position
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) { // Show button after scrolling 300px
+                    backToTopBtn.classList.add('show');
+                } else {
+                    backToTopBtn.classList.remove('show');
+                }
+            });
+
+            // Scroll to top when button is clicked
+            backToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        } else {
+            console.error("Back to Top button not found.");
+        }
+
+
+        // --- 4. Dynamic Testimonial Carousel ---
+        const carouselContainer = document.querySelector('.testimonial-carousel-container');
+        const carousel = document.querySelector('.testimonial-carousel');
+        const prevBtn = document.querySelector('.carousel-nav-btn.prev');
+        const nextBtn = document.querySelector('.carousel-nav-btn.next');
+        const testimonialItems = document.querySelectorAll('.testimonial-item');
+
+        if (carousel && prevBtn && nextBtn && testimonialItems.length > 0) {
+            let currentIndex = 0;
+            // Calculate item width dynamically including margins
+            let itemWidth = testimonialItems[0].offsetWidth +
+                            parseFloat(getComputedStyle(testimonialItems[0]).marginLeft) +
+                            parseFloat(getComputedStyle(testimonialItems[0]).marginRight);
+
+            function updateCarousel() {
+                // Adjust scroll position to show the current item
+                carousel.style.transform = `translateX(-${currentIndex * itemWidth}px)`;
+            }
+
+            // Event listener for the "Next" button
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % testimonialItems.length;
+                updateCarousel();
+            });
+
+            // Event listener for the "Previous" button
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + testimonialItems.length) % testimonialItems.length;
+                updateCarousel();
+            });
+
+            // Optional: Auto-play carousel
+            // let autoPlayInterval = setInterval(() => {
+            //     nextBtn.click();
+            // }, 5000); // Change slide every 5 seconds
+
+            // Optional: Pause auto-play on hover
+            // carouselContainer.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+            // carouselContainer.addEventListener('mouseleave', () => {
+            //     autoPlayInterval = setInterval(() => {
+            //         nextBtn.click();
+            //     }, 5000);
+            // });
+
+            // Initial update to ensure correct positioning
+            updateCarousel();
+
+            // Recalculate itemWidth on window resize to ensure responsiveness
+            window.addEventListener('resize', () => {
+                // Re-fetch item width as it might change due to responsive CSS
+                itemWidth = testimonialItems[0].offsetWidth +
+                            parseFloat(getComputedStyle(testimonialItems[0]).marginLeft) +
+                            parseFloat(getComputedStyle(testimonialItems[0]).marginRight);
+                updateCarousel(); // Re-position carousel based on new width
+            });
+
+        } else {
+            console.warn("Testimonial carousel elements not fully found or no testimonials available. Carousel features will not be active.");
+        }
+
+
+        // --- 5. Client-Side Form Validation for Quote Form ---
+        const quoteForm = document.getElementById('quoteForm');
+
+        if (quoteForm) {
+            quoteForm.addEventListener('submit', function(event) {
+                let isValid = true;
+
+                // Function to show error message
+                function showError(inputElement, messageElement, message) {
+                    inputElement.classList.add('error');
+                    messageElement.textContent = message;
+                }
+
+                // Function to clear error message
+                function clearError(inputElement, messageElement) {
+                    inputElement.classList.remove('error');
+                    messageElement.textContent = '';
+                }
+
+                // Validate Name
+                const nameInput = document.getElementById('name');
+                const nameError = document.getElementById('nameError');
+                if (nameInput.value.trim() === '') {
+                    showError(nameInput, nameError, 'Name is required.');
+                    isValid = false;
+                } else {
+                    clearError(nameInput, nameError);
+                }
+
+                // Validate Email
+                const emailInput = document.getElementById('email');
+                const emailError = document.getElementById('emailError');
+                const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (emailInput.value.trim() === '') {
+                    showError(emailInput, emailError, 'Email is required.');
+                    isValid = false;
+                } else if (!emailPattern.test(emailInput.value.trim())) {
+                    showError(emailInput, emailError, 'Please enter a valid email address.');
+                    isValid = false;
+                } else {
+                    clearError(emailInput, emailError);
+                }
+
+                // Validate Service
+                const serviceSelect = document.getElementById('service');
+                const serviceError = document.getElementById('serviceError');
+                if (serviceSelect.value === '') {
+                    showError(serviceSelect, serviceError, 'Please select a service.');
+                    isValid = false;
+                } else {
+                    clearError(serviceSelect, serviceError);
+                }
+
+                // Validate Message
+                const messageTextarea = document.getElementById('message');
+                const messageError = document.getElementById('messageError');
+                if (messageTextarea.value.trim() === '') {
+                    showError(messageTextarea, messageError, 'Message / Project Details are required.');
+                    isValid = false;
+                } else {
+                    clearError(messageTextarea, messageError);
+                }
+
+                // If validation fails, prevent form submission
+                if (!isValid) {
+                    event.preventDefault();
+                }
+            });
+
+            // Add real-time validation on input change/blur for better UX
+            document.querySelectorAll('#quoteForm input, #quoteForm select, #quoteForm textarea').forEach(input => {
+                input.addEventListener('input', function() {
+                    // Trigger validation logic for the specific input
+                    const errorElement = document.getElementById(this.id + 'Error');
+                    if (this.checkValidity()) {
+                        clearError(this, errorElement);
+                    } else {
+                        // For required fields, show a generic message on input
+                        if (this.value.trim() === '' && this.hasAttribute('required')) {
+                             showError(this, errorElement, `${this.labels[0].textContent.replace(':', '')} is required.`);
+                        } else if (this.type === 'email' && !this.checkValidity()) {
+                            showError(this, errorElement, 'Please enter a valid email address.');
+                        }
+                    }
+                });
+                input.addEventListener('blur', function() {
+                    // Re-validate on blur to catch errors when user leaves field
+                    const errorElement = document.getElementById(this.id + 'Error');
+                    if (this.checkValidity()) {
+                        clearError(this, errorElement);
+                    } else {
+                        if (this.value.trim() === '' && this.hasAttribute('required')) {
+                            showError(this, errorElement, `${this.labels[0].textContent.replace(':', '')} is required.`);
+                        } else if (this.type === 'email' && !this.checkValidity()) {
+                            showError(this, errorElement, 'Please enter a valid email address.');
+                        }
+                    }
+                });
+            });
+
+        } else {
+            console.error("Quote form element not found. Form validation will not be active.");
+        }
+
+
+        // --- 6. Animate On Scroll (AOS) ---
+        const animateElements = document.querySelectorAll('.animate-on-scroll');
+
+        const observerOptions = {
+            root: null, // viewport as root
+            rootMargin: '0px',
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animated');
+                    observer.unobserve(entry.target); // Stop observing once animated
+                }
+            });
+        }, observerOptions);
+
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Optional: Add a small delay to some elements for staggered animation
+        // This would require adding a data-delay attribute to your HTML elements
+        // e.g., <div class="animate-on-scroll" data-delay="200">
+        // And then in JS:
+        // entry.target.style.transitionDelay = entry.target.dataset.delay + 'ms';
+
+    </script>
+</body>
+</html>
